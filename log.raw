@@ -1,0 +1,196 @@
+[0KRunning with gitlab-runner 17.10.1 (ef334dcc)[0;m
+[0K  on My Docker Runner t3_EY5rP_, system ID: s_712556376ec8[0;m
+section_start:1743578098:prepare_executor[0K[0K[36;1mPreparing the "docker" executor[0;m[0;m
+[0KUsing Docker executor with image docker:20.10.5 ...[0;m
+[0KStarting service docker:20.10.5-dind...[0;m
+[0KPulling docker image docker:20.10.5-dind ...[0;m
+[0KUsing docker image sha256:0a9822c8848df3eb0a1562e553fdd54215939ef0a528434ee026c64ff645148c for docker:20.10.5-dind with digest docker@sha256:e4ecd4e9ad5140d584669451b05e406d8cf7603e51972b862178ad93c38b2b08 ...[0;m
+[0KWaiting for services to be up and running (timeout 30 seconds)...[0;m
+[0KPulling docker image docker:20.10.5 ...[0;m
+[0KUsing docker image sha256:1588477122de4fdfe9fcb9ddeeee6ac6b93e9e05a65c68a6e22add0a98b8e0fe for docker:20.10.5 with digest docker@sha256:7ed427295687586039ff3433bb9b4419c5cf1e6294025dadf7641126665a78f5 ...[0;m
+section_end:1743578111:prepare_executor[0Ksection_start:1743578111:prepare_script[0K[0K[36;1mPreparing environment[0;m[0;m
+Running on runner-t3ey5rp-project-1-concurrent-0 via runner...
+section_end:1743578112:prepare_script[0Ksection_start:1743578112:get_sources[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mFetching changes with git depth set to 20...[0;m
+Reinitialized existing Git repository in /builds/Alien122/netology/.git/
+[32;1mCreated fresh repository.[0;m
+[32;1mChecking out 5fa5f7be as detached HEAD (ref is main)...[0;m
+
+[32;1mSkipping Git submodules setup[0;m
+section_end:1743578113:get_sources[0Ksection_start:1743578113:step_script[0K[0K[36;1mExecuting "step_script" stage of the job script[0;m[0;m
+[0KUsing docker image sha256:1588477122de4fdfe9fcb9ddeeee6ac6b93e9e05a65c68a6e22add0a98b8e0fe for docker:20.10.5 with digest docker@sha256:7ed427295687586039ff3433bb9b4419c5cf1e6294025dadf7641126665a78f5 ...[0;m
+[32;1m$ docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY[0;m
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[32;1m$ docker build -t $CI_REGISTRY/alien122/netology/python-api:latest .[0;m
+Sending build context to Docker daemon  87.55kB
+Step 1/6 : FROM fedora:latest
+latest: Pulling from library/fedora
+510231d94cd9: Pulling fs layer
+510231d94cd9: Verifying Checksum
+510231d94cd9: Download complete
+510231d94cd9: Pull complete
+Digest: sha256:f84a7b765ce09163d11de44452a4b56c1b2f5571b6f640b3b973c6afc4e63212
+Status: Downloaded newer image for fedora:latest
+ ---> 9645f4e2280d
+Step 2/6 : RUN yum update -y && yum install -y python3 python3-pip
+ ---> Running in 1ddbae27ff3c
+[91mUpdating and loading repositories:
+[0m[91m Fedora 41 openh264 (From Cisco) - x86_ 100% |   4.0 KiB/s |   4.8 KiB |  00m01s
+[0m[91m Fedora 41 - x86_64                     100% |  11.6 MiB/s |  35.4 MiB |  00m03s
+[0m[91m Fedora 41 - x86_64 - Updates           100% |   8.9 MiB/s |  15.9 MiB |  00m02s
+[0m[91mRepositories loaded.
+[0m[91mTotal size of inbound packages is 970 KiB. Need to download 970 KiB.
+After this operation, 22 KiB extra will be used (install 2 MiB, remove 2 MiB).
+[0mPackage               Arch   Version      Repository                            Size
+Upgrading:
+ openldap             x86_64 2.6.9-1.fc41 updates                          645.3 KiB
+   replacing openldap x86_64 2.6.8-7.fc41 468e23d13dae4189804dd2e6f84e5b07 631.4 KiB
+ tzdata               noarch 2025b-1.fc41 updates                            1.6 MiB
+   replacing tzdata   noarch 2025a-1.fc41 468e23d13dae4189804dd2e6f84e5b07   1.6 MiB
+
+Transaction Summary:
+ Upgrading:          2 packages
+ Replacing:          2 packages
+
+[91m[1/2] openldap-0:2.6.9-1.fc41.x86_64    100% |   9.3 MiB/s | 255.9 KiB |  00m00s
+[0m[91m[2/2] tzdata-0:2025b-1.fc41.noarch      100% |  12.2 MiB/s | 713.9 KiB |  00m00s
+--------------------------------------------------------------------------------
+[2/2] Total                             100% |   3.5 MiB/s | 969.8 KiB |  00m00s
+[0m[91mRunning transaction
+[0m[91m[1/6] Verify package files              100% | 400.0   B/s |   2.0   B |  00m00s
+[0m[91m[2/6] Prepare transaction               100% | 166.0   B/s |   4.0   B |  00m00s
+[0m[91m[3/6] Upgrading tzdata-0:2025b-1.fc41.n 100% |   2.0 MiB/s |   1.9 MiB |  00m01s
+[0m[91m[4/6] Upgrading openldap-0:2.6.9-1.fc41 100% |   3.9 MiB/s | 649.1 KiB |  00m00s
+[0m[91m[5/6] Removing tzdata-0:2025a-1.fc41.no 100% | 182.4 KiB/s |   1.8 KiB |  00m00s
+[0m[91m[6/6] Removing openldap-0:2.6.8-7.fc41. 100% |   3.0   B/s |  26.0   B |  00m08s
+[0m[91mComplete!
+[0m[91mUpdating and loading repositories:
+[0m[91mRepositories loaded.
+[0m[91mTotal size of inbound packages is 13 MiB. Need to download 13 MiB.
+After this operation, 54 MiB extra will be used (install 54 MiB, remove 0 B).
+[0mPackage                     Arch   Version        Repository      Size
+Installing:
+ python3                    x86_64 3.13.2-1.fc41  updates     31.8 KiB
+ python3-pip                noarch 24.2-1.fc41    fedora      11.4 MiB
+Installing dependencies:
+ expat                      x86_64 2.7.1-1.fc41   updates    298.3 KiB
+ libb2                      x86_64 0.98.1-12.fc41 fedora      42.2 KiB
+ mpdecimal                  x86_64 2.5.1-16.fc41  fedora     204.9 KiB
+ python-pip-wheel           noarch 24.2-1.fc41    fedora       1.2 MiB
+ python3-libs               x86_64 3.13.2-1.fc41  updates     40.4 MiB
+Installing weak dependencies:
+ python-unversioned-command noarch 3.13.2-1.fc41  updates     23.0   B
+
+Transaction Summary:
+ Installing:         8 packages
+
+[91m[1/8] python3-0:3.13.2-1.fc41.x86_64    100% | 527.1 KiB/s |  28.5 KiB |  00m00s
+[0m[91m[2/8] python3-libs-0:3.13.2-1.fc41.x86_ 100% |  22.4 MiB/s |   9.1 MiB |  00m00s
+[0m[91m[3/8] libb2-0:0.98.1-12.fc41.x86_64     100% |  67.7 KiB/s |  25.7 KiB |  00m00s
+[0m[91m[4/8] mpdecimal-0:2.5.1-16.fc41.x86_64  100% | 494.2 KiB/s |  89.0 KiB |  00m00s
+[0m[91m[5/8] expat-0:2.7.1-1.fc41.x86_64       100% |   1.0 MiB/s | 116.0 KiB |  00m00s
+[0m[91m[6/8] python-unversioned-command-0:3.13 100% | 130.2 KiB/s |  11.6 KiB |  00m00s
+[0m[91m[7/8] python3-pip-0:24.2-1.fc41.noarch  100% |   3.3 MiB/s |   2.7 MiB |  00m01s
+[0m[91m[8/8] python-pip-wheel-0:24.2-1.fc41.no 100% |   1.9 MiB/s |   1.2 MiB |  00m01s
+--------------------------------------------------------------------------------
+[8/8] Total                             100% |   6.3 MiB/s |  13.3 MiB |  00m02s
+[0m[91mRunning transaction
+[0m[91m[ 1/10] Verify package files            100% | 140.0   B/s |   8.0   B |  00m00s
+[0m[91m[ 2/10] Prepare transaction             100% | 190.0   B/s |   8.0   B |  00m00s
+[0m[91m[ 3/10] Installing expat-0:2.7.1-1.fc41 100% |   2.9 MiB/s | 300.4 KiB |  00m00s
+[0m[91m[ 4/10] Installing python-pip-wheel-0:2 100% |  46.0 MiB/s |   1.2 MiB |  00m00s
+[0m[91m[ 5/10] Installing mpdecimal-0:2.5.1-16 100% |   5.4 MiB/s | 206.0 KiB |  00m00s
+[0m[91m[ 6/10] Installing libb2-0:0.98.1-12.fc 100% |   2.2 MiB/s |  43.3 KiB |  00m00s
+[0m[91m[ 7/10] Installing python3-libs-0:3.13. 100% |  48.7 MiB/s |  40.8 MiB |  00m01s
+[0m[91m[ 8/10] Installing python3-0:3.13.2-1.f 100% | 621.0 KiB/s |  33.5 KiB |  00m00s
+[0m[91m[ 9/10] Installing python3-pip-0:24.2-1 100% |  44.5 MiB/s |  11.7 MiB |  00m00s
+[0m[91m[10/10] Installing python-unversioned-c 100% |  60.0   B/s | 424.0   B |  00m07s
+[0m[91mComplete!
+[0mRemoving intermediate container 1ddbae27ff3c
+ ---> 65cf46c6bea7
+Step 3/6 : RUN pip3 install flask flask_restful flask_jsonpify
+ ---> Running in ff431075c35e
+Collecting flask
+  Downloading flask-3.1.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting flask_restful
+  Downloading Flask_RESTful-0.3.10-py2.py3-none-any.whl.metadata (1.0 kB)
+Collecting flask_jsonpify
+  Downloading Flask-Jsonpify-1.5.0.tar.gz (3.0 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting Werkzeug>=3.1 (from flask)
+  Downloading werkzeug-3.1.3-py3-none-any.whl.metadata (3.7 kB)
+Collecting Jinja2>=3.1.2 (from flask)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting itsdangerous>=2.2 (from flask)
+  Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting click>=8.1.3 (from flask)
+  Downloading click-8.1.8-py3-none-any.whl.metadata (2.3 kB)
+Collecting blinker>=1.9 (from flask)
+  Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting aniso8601>=0.82 (from flask_restful)
+  Downloading aniso8601-10.0.0-py2.py3-none-any.whl.metadata (23 kB)
+Collecting six>=1.3.0 (from flask_restful)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting pytz (from flask_restful)
+  Downloading pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->flask)
+  Downloading MarkupSafe-3.0.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Downloading flask-3.1.0-py3-none-any.whl (102 kB)
+Downloading Flask_RESTful-0.3.10-py2.py3-none-any.whl (26 kB)
+Downloading aniso8601-10.0.0-py2.py3-none-any.whl (52 kB)
+Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Downloading click-8.1.8-py3-none-any.whl (98 kB)
+Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading werkzeug-3.1.3-py3-none-any.whl (224 kB)
+Downloading pytz-2025.2-py2.py3-none-any.whl (509 kB)
+Downloading MarkupSafe-3.0.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (23 kB)
+Building wheels for collected packages: flask_jsonpify
+  Building wheel for flask_jsonpify (pyproject.toml): started
+  Building wheel for flask_jsonpify (pyproject.toml): finished with status 'done'
+  Created wheel for flask_jsonpify: filename=flask_jsonpify-1.5.0-py3-none-any.whl size=3108 sha256=aae2cc843974577580456164bd186415514d0f351c7ebc275284cdd4ef1d7187
+  Stored in directory: /root/.cache/pip/wheels/81/02/a7/80d60b4567a3b90b28e25f59ea21a22a9d5637053f7b174cf5
+Successfully built flask_jsonpify
+Installing collected packages: pytz, aniso8601, six, MarkupSafe, itsdangerous, click, blinker, Werkzeug, Jinja2, flask, flask_restful, flask_jsonpify
+Successfully installed Jinja2-3.1.6 MarkupSafe-3.0.2 Werkzeug-3.1.3 aniso8601-10.0.0 blinker-1.9.0 click-8.1.8 flask-3.1.0 flask_jsonpify-1.5.0 flask_restful-0.3.10 itsdangerous-2.2.0 pytz-2025.2 six-1.17.0
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[0mRemoving intermediate container ff431075c35e
+ ---> 65d90a2fc7cb
+Step 4/6 : WORKDIR /app
+ ---> Running in 694e5cc2cbdb
+Removing intermediate container 694e5cc2cbdb
+ ---> 731fefe1de09
+Step 5/6 : COPY python-api.py .
+ ---> a0f7364c195f
+Step 6/6 : ENTRYPOINT ["python3", "/app/python-api.py"]
+ ---> Running in 4b82429b4a8e
+Removing intermediate container 4b82429b4a8e
+ ---> e4c7ca53cf9c
+Successfully built e4c7ca53cf9c
+Successfully tagged markin.gitlab.yandexcloud.net:5050/alien122/netology/python-api:latest
+[32;1m$ docker push $CI_REGISTRY/alien122/netology/python-api:latest[0;m
+The push refers to repository [markin.gitlab.yandexcloud.net:5050/alien122/netology/python-api]
+12f66a8e49df: Preparing
+1148fffcbbc8: Preparing
+4abdcfd69670: Preparing
+477ce18dc4db: Preparing
+954e67ef1fbb: Preparing
+954e67ef1fbb: Layer already exists
+1148fffcbbc8: Pushed
+12f66a8e49df: Pushed
+4abdcfd69670: Pushed
+477ce18dc4db: Pushed
+latest: digest: sha256:baf7186c506b309424a3cca1d5f321f46db9a26f1a79cf96a60acc4a6ccdcb33 size: 1365
+section_end:1743578228:step_script[0Ksection_start:1743578228:cleanup_file_variables[0K[0K[36;1mCleaning up project directory and file based variables[0;m[0;m
+section_end:1743578229:cleanup_file_variables[0K[32;1mJob succeeded[0;m
