@@ -55,10 +55,9 @@
 
 В качестве ответа пришлите подробные скриншоты по каждому пункту задания:
 
-- файл gitlab-ci.yml;
-- Dockerfile; 
-- лог успешного выполнения пайплайна;
-
+- [файл gitlab-ci.yml](https://github.com/Markin-AI/ci-06/blob/main/.gitlab-ci.yml);
+- [Dockerfile](https://github.com/Markin-AI/ci-06/blob/main/Dockerfile); 
+- [лог успешного выполнения пайплайна](https://github.com/Markin-AI/ci-06/blob/main/log.raw);
 - решённый Issue.
 
 ![8](https://github.com/Markin-AI/ci-06/blob/main/img/8.png)
